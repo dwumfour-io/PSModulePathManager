@@ -15,7 +15,7 @@
 param()
 
 $script:Version = "1.0.0"
-$script:GitHubRepo = "https://github.com/dwumfour-io/PowerShell"
+$script:GitHubRepo = "https://github.com/dwumfour-io/PSModulePathManager"
 $script:BackupFolder = "$env:LOCALAPPDATA\PSModulePathManager\Backups"
 
 Add-Type -AssemblyName PresentationFramework, PresentationCore, WindowsBase, System.Windows.Forms
@@ -64,10 +64,24 @@ $needsSta = [System.Threading.Thread]::CurrentThread.ApartmentState -ne 'STA'
 
 if (-not $isAdmin -or $needsSta) {
     $psExe = (Get-Process -Id $PID).Path
-    $args = @()
+    $args = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-WindowStyle', 'Hidden')
     if ($needsSta) { $args += '-STA' }
-    $args += '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', "`"$PSCommandPath`""
-    Start-Process -FilePath $psExe -ArgumentList $args -Verb $(if($isAdmin){'Open'}else{'RunAs'})
+    $args += '-File', "`"$PSCommandPath`""
+    
+    $startInfo = New-Object System.Diagnostics.ProcessStartInfo
+    $startInfo.FileName = $psExe
+    $startInfo.Arguments = $args -join ' '
+    $startInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Hidden
+    $startInfo.CreateNoWindow = $true
+    
+    if (-not $isAdmin) {
+        $startInfo.Verb = 'RunAs'
+        $startInfo.UseShellExecute = $true
+    } else {
+        $startInfo.UseShellExecute = $false
+    }
+    
+    [System.Diagnostics.Process]::Start($startInfo) | Out-Null
     exit
 }
 

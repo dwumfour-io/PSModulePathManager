@@ -1,7 +1,7 @@
 # PSModulePath Manager
 
 [![PowerShell Gallery](https://img.shields.io/powershellgallery/v/PSModulePathManager)](https://www.powershellgallery.com/packages/PSModulePathManager)
-[![License](https://img.shields.io/github/license/dwumfour-io/PowerShell)](LICENSE)
+[![License](https://img.shields.io/github/license/dwumfour-io/PSModulePathManager)](LICENSE)
 
 A GUI tool to easily manage PowerShell module paths (PSModulePath environment variable).
 

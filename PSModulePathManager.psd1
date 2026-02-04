@@ -29,10 +29,10 @@
             Tags = @('PSModulePath', 'Environment', 'GUI', 'Management', 'PowerShell', 'Modules', 'Path', 'Tool')
             
             # A URL to the license for this module
-            LicenseUri = 'https://github.com/dwumfour-io/PowerShell/blob/main/LICENSE'
+            LicenseUri = 'https://github.com/dwumfour-io/PSModulePathManager/blob/master/LICENSE'
             
             # A URL to the main website for this project
-            ProjectUri = 'https://github.com/dwumfour-io/PowerShell'
+            ProjectUri = 'https://github.com/dwumfour-io/PSModulePathManager'
             
             # A URL to an icon representing this module
             # IconUri = ''

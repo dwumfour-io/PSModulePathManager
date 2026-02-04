@@ -1,0 +1,26 @@
+# Binary files
+*.exe
+*.dll
+*.pdb
+
+# Launcher files (generated)
+Launch-PSModulePathManager.bat
+Launch-PSModulePathManager.vbs
+Launcher.cs
+
+# Backup files
+*.bak
+*~
+
+# PowerShell
+*.ps1~
+*.psm1~
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE files
+.vscode/
+.vs/
+*.code-workspace
