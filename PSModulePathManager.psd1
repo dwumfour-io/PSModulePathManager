@@ -1,7 +1,7 @@
 @{
     # Module manifest for module 'PSModulePathManager'
     RootModule = 'PSModulePathManager.psm1'
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '1.0.1'
     GUID = 'a1b2c3d4-e5f6-4789-a0b1-c2d3e4f56789'
     Author = 'Joe Dwumfour'
     CompanyName = 'dwumfour-io'
