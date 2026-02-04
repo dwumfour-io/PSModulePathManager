@@ -1,5 +1,7 @@
 # Binary files
+# Allow PSModulePathManager.exe (our main launcher)
 *.exe
+!PSModulePathManager.exe
 *.dll
 *.pdb
 
