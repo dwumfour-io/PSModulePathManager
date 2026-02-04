@@ -35,7 +35,7 @@
             ProjectUri = 'https://github.com/dwumfour-io/PSModulePathManager'
             
             # A URL to an icon representing this module
-            # IconUri = ''
+            IconUri = 'https://raw.githubusercontent.com/dwumfour-io/PSModulePathManager/master/icon.png'
             
             # ReleaseNotes of this module
             ReleaseNotes = @'
