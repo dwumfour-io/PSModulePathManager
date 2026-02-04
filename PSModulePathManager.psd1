@@ -1,7 +1,7 @@
 @{
     # Module manifest for module 'PSModulePathManager'
     RootModule = 'PSModulePathManager.psm1'
-    ModuleVersion = '1.0.1'
+    ModuleVersion = '1.0.2'
     GUID = 'a1b2c3d4-e5f6-4789-a0b1-c2d3e4f56789'
     Author = 'Joe Dwumfour'
     CompanyName = 'dwumfour-io'
@@ -39,20 +39,24 @@
             
             # ReleaseNotes of this module
             ReleaseNotes = @'
-## v1.0.0 - Initial Release
+## v1.0.2 - SESSION Paths Display
 
-### Features
+### New Features
+- SESSION scope display (blue) for temporary paths
+- Shows all paths visible to PowerShell (USER + SYSTEM + SESSION)
+- Enhanced statistics with SESSION path count
+
+## v1.0.1 - URL Corrections
+- Fixed GitHub repository URLs
+- Added .gitignore for binaries
+
+## v1.0.0 - Initial Release
 - GUI interface for managing PSModulePath
 - Add/Remove paths from USER and SYSTEM scopes
-- Browse for folders with folder picker
-- Export/Import configurations
-- Auto-backup before changes
+- Browse for folders, Export/Import, Auto-backup
 - Path validation and duplicate detection
-- Keyboard shortcuts (F1, F5, Delete, Ctrl+C, Escape)
-- Double-click to copy path or open in Explorer
-- Color-coded paths (Green=USER, Orange=SYSTEM)
-- Statistics display
-- Help/About dialog with usage instructions
+- Keyboard shortcuts, Color-coded paths
+- Help/About dialog
 '@
             
             # Prerelease string of this module

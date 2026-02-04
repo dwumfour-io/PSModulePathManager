@@ -5,6 +5,17 @@ All notable changes to PSModulePath Manager will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-02-04
+
+### Added
+- SESSION scope display showing temporary paths (blue color-coded entries)
+- Now displays all paths visible to PowerShell, including session-only paths
+- Enhanced statistics to show breakdown of USER, SYSTEM, and SESSION paths
+
+### Changed
+- RefreshList function now reads $env:PSModulePath to capture current session state
+- Help dialog updated with SESSION scope explanation
+
 ## [1.0.1] - 2026-02-04
 
 ### Fixed

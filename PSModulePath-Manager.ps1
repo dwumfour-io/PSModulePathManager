@@ -14,7 +14,7 @@
 [CmdletBinding()]
 param()
 
-$script:Version = "1.0.0"
+$script:Version = "1.0.2"
 $script:GitHubRepo = "https://github.com/dwumfour-io/PSModulePathManager"
 $script:BackupFolder = "$env:LOCALAPPDATA\PSModulePathManager\Backups"
 
@@ -224,9 +224,15 @@ $win.Add_KeyDown({
 function RefreshList {
     $userPath = [Environment]::GetEnvironmentVariable("PSModulePath", "User")
     $machinePath = [Environment]::GetEnvironmentVariable("PSModulePath", "Machine")
+    $currentSession = $env:PSModulePath
     
     $userPaths = if($userPath) { $userPath.Split(';') | Where-Object {$_} } else { @() }
     $machinePaths = if($machinePath) { $machinePath.Split(';') | Where-Object {$_} } else { @() }
+    $sessionPaths = if($currentSession) { $currentSession.Split(';') | Where-Object {$_} } else { @() }
+    
+    # Find session-only paths (paths in current session but not in User or Machine)
+    $persistentPaths = $userPaths + $machinePaths
+    $sessionOnlyPaths = $sessionPaths | Where-Object { $_ -notin $persistentPaths }
     
     $list.Items.Clear()
     
@@ -246,8 +252,17 @@ function RefreshList {
         $list.Items.Add($item) | Out-Null
     }
     
+    # Add session-only paths (temporary, not persistent)
+    foreach ($p in $sessionOnlyPaths) {
+        $item = New-Object System.Windows.Controls.ListBoxItem
+        $item.Content = "[SESSION] $p"
+        $item.Background = [System.Windows.Media.Brushes]::LightSkyBlue
+        $item.Foreground = [System.Windows.Media.Brushes]::DarkBlue
+        $list.Items.Add($item) | Out-Null
+    }
+    
     # Update stats
-    $statsText.Text = "Total: $($list.Items.Count) paths ($($userPaths.Count) USER, $($machinePaths.Count) SYSTEM)"
+    $statsText.Text = "Total: $($list.Items.Count) paths ($($userPaths.Count) USER, $($machinePaths.Count) SYSTEM, $($sessionOnlyPaths.Count) SESSION)"
     
     if (-not $userPaths -and -not $machinePaths) {
         $status.Text = "No paths configured"
@@ -309,6 +324,9 @@ function Show-HelpDialog {
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
                 • Orange paths = SYSTEM scope (all users on this computer)
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+                • Blue paths = SESSION scope (temporary, current session only)
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
                 • Double-click a path to copy or open in Explorer
