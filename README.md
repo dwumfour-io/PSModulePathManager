@@ -71,14 +71,17 @@ PSModPathMgr
 
 ### Main Interface
 The main window shows all current paths with color coding:
-- **Green background** = USER scope (personal)
-- **Orange background** = SYSTEM scope (all users)
+- **Green background** = USER scope (personal, persistent)
+- **Orange background** = SYSTEM scope (all users, persistent)
+- **Blue background** = SESSION scope (temporary, current session only)
+
+> **Note**: SESSION paths are read from `$env:PSModulePath` and show paths added during your current PowerShell session that haven't been persisted to USER or SYSTEM scopes.
 
 ### Features in Action
 - Browse for folders with the folder picker
 - Export configurations for backup
 - Import saved configurations
-- View statistics and path counts
+- View statistics and path counts by scope (USER/SYSTEM/SESSION)
 
 ## Auto-Backup
 
@@ -86,6 +89,16 @@ The tool automatically creates backups before any changes:
 - Location: `%LOCALAPPDATA%\PSModulePathManager\Backups`
 - Keeps last 10 backups
 - Timestamp-based filenames
+
+## Icon & Launcher
+
+The module includes a professional icon and console-free launcher:
+- **Custom Icon**: Blue gradient with folder and PowerShell arrow design
+- **Hidden Console**: Launches without command prompt window flash
+- **Desktop Integration**: Start Menu and Desktop shortcuts available
+- **Security**: Build scripts provided for code signing (commercial cert, self-signed, or GitHub Actions)
+
+To build the launcher with embedded icon, see [Build-IconLauncher.ps1](Build-IconLauncher.ps1).
 
 ## Contributing
 

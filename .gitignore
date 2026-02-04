@@ -8,6 +8,14 @@ Launch-PSModulePathManager.bat
 Launch-PSModulePathManager.vbs
 Launcher.cs
 
+# Icon files (keep source, exclude builds)
+# icon.png is tracked - it's the source
+# icon.ico should be tracked after conversion
+# Build artifacts excluded
+
+# Private documentation
+Code-Explanation-NonTechnical.html
+
 # Backup files
 *.bak
 *~

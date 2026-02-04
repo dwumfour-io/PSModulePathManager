@@ -18,6 +18,9 @@
 - [ ] Test the module locally
 - [ ] Update README.md if needed
 - [ ] Take a screenshot and save as `screenshot.png`
+- [ ] Build icon launcher if icon was updated (see Build-IconLauncher.ps1)
+- [ ] Test icon-embedded launcher on clean Windows install
+- [ ] Consider code signing for Windows SmartScreen trust (optional)
 
 ## Test Locally First
 
@@ -81,13 +84,20 @@ Publish-Module -Path ".\PSModulePathManager" -NuGetApiKey $apiKey -WhatIf
 
 ```
 PSModulePathManager/
-├── PSModulePathManager.psd1    # Module manifest
-├── PSModulePathManager.psm1    # Module script
-├── PSModulePath-Manager.ps1    # Main GUI script
-├── README.md                   # Documentation
-├── LICENSE                     # MIT License
-├── CHANGELOG.md                # Version history
-└── screenshot.png              # Screenshot for README
+├── PSModulePathManager.psd1       # Module manifest
+├── PSModulePathManager.psm1       # Module script
+├── PSModulePath-Manager.ps1       # Main GUI script
+├── PSModulePathManager.exe        # Icon-embedded launcher (optional)
+├── README.md                      # Documentation
+├── LICENSE                        # MIT License
+├── CHANGELOG.md                   # Version history
+├── PUBLISHING.md                  # This file
+├── Build-IconLauncher.ps1         # Icon build script
+├── Create-Icon.ps1                # Icon generator
+├── LauncherWithIcon.cs            # C# launcher source
+├── icon.png                       # Application icon (256x256)
+├── icon.ico                       # Windows icon format
+└── screenshot.png                 # Screenshot for README
 ```
 
 ## Troubleshooting
